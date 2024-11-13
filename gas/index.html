@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <div>ようこそ <?= name ?> さん [<?= sub ?>]</div>
+    <button id="btn">AWS管理コンソール</button>
+  </body>
+  <script>
+    document.getElementById('btn').addEventListener('click', () => {
+      google.script.run.withSuccessHandler((url) => {
+        window.open(url, '_blank');
+      }).withFailureHandler((err) => {
+        alert(err);
+      }).getUrl();
+    });
+  </script>
+</html>
