@@ -4,6 +4,7 @@
     <base target="_top">
   </head>
   <body>
+    <div><img src="<?= picture ?>"></div>
     <div>ようこそ <?= name ?> さん [<?= sub ?>]</div>
     <button id="btn">AWS管理コンソール: <?= account_id ?></button>
   </body>
@@ -12,7 +13,7 @@
       google.script.run.withSuccessHandler((url) => {
         window.open(url, '_blank');
       }).withFailureHandler((err) => {
-        alert(err);
+        alert("AWSにアクセスできません。");
       }).getUrl();
     });
   </script>

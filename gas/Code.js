@@ -61,8 +61,9 @@ function doGet() {
     console.log('aud: ' + payload.aud + ' sub: ' + payload.sub + ' (' + payload.email + ')');
 
     var template = HtmlService.createTemplateFromFile('index.html');
-    template.name = payload.name;
-    template.sub = payload.sub;
+    template.name       = payload.name;
+    template.sub        = payload.sub;
+    template.picture    = payload.picture;
     template.account_id = properties.getProperty('ACCOUNT_ID');
     const html = template.evaluate();
     var output = HtmlService.createHtmlOutput(html);
