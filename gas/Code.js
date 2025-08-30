@@ -55,12 +55,15 @@ function getUrl() {
 }
 
 function doGet() {
+    const properties = PropertiesService.getScriptProperties();
+
     const payload = getToken()['payload'];
     console.log('aud: ' + payload.aud + ' sub: ' + payload.sub + ' (' + payload.email + ')');
 
     var template = HtmlService.createTemplateFromFile('index.html');
     template.name = payload.name;
     template.sub = payload.sub;
+    template.account_id = properties.getProperty('ACCOUNT_ID');
     const html = template.evaluate();
     var output = HtmlService.createHtmlOutput(html);
     output.setTitle("AWS管理コンソール");
